@@ -1166,7 +1166,7 @@ class FEM3D:
             elif self.t >= 3600:
                 print(f'Time taken: {self.t/60} min')
                 
-        return self.F_n
+        return self.F_n, [wc,self.Vc]
     
     def amort_eigenfrequency(self,neigs=12,near_freq=None,timeit=True):
         self.neigs = neigs
@@ -1356,7 +1356,7 @@ class FEM3D:
                 linest = '-'
             for i in range(len(self.R.coord)):
                 self.pR[:,i] = self.pN[:,closest_node(self.nos,R.coord[i,:])]
-                # self.pR[:,i] = coord_interpolation(self.nos, self.elem_vol, R.coord[i,:], self.pN)
+                 #self.pR[:,i] = coord_interpolation(self.nos, self.elem_vol, R.coord[i,:], self.pN)
                 plt.semilogx(self.freq,p2SPL(self.pR[:,i]),linestyle = linest,label=f'R{i} | {self.R.coord[i,:]}m')
                 
             if len(self.R.coord) > 1:

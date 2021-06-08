@@ -78,6 +78,30 @@ class Receiver():
         self.coord[:, 1] = yv.flatten()
         self.coord[:, 2] = zr
         
+    def discretized_array(self, coord, I = 10,  J = 10, height = 1.0):
+        '''
+        This method initializes a planar array of receivers (z/xy plane). It will overwrite
+        self.coord to be a matrix where each line gives a 3D coordinate for each receiver
+        Inputs:
+            x_len - the length of the x direction (array goes from -x_len/2 to +x_len/2).
+            n_x - the number of receivers in the x direction
+            y_len - the length of the y direction (array goes from -x_len/2 to +x_len/2).
+            n_y - the number of receivers in the y direction
+            zr - distance from the closest microphone layer to the sample
+        '''
+        # x and y coordinates of the grid
+        #xc = np.linspace(-x_len/2, x_len/2, n_x)
+        #yc = np.linspace(-y_len/2, y_len/2, n_y)
+        # meshgrid
+        #xv, yv = np.meshgrid(xc, yc)
+        # initialize receiver list in memory
+        xv= coord[:,0]
+        yv= coord[:,1]
+        self.coord = np.zeros((I * J, 3), dtype = np.float32)
+        self.coord[:, 0] = xv.flatten()
+        self.coord[:, 1] = yv.flatten()
+        self.coord[:, 2] = height
+        
     def arc_receivers(self, radius = 1.0, ns = 10, angle_span = (-90, 90), d = 0, axis = "x" ):
         points = {}
         theta = np.arange(angle_span[0]*np.pi/180, (angle_span[1]+ns)*np.pi/180, ns*np.pi/180)
