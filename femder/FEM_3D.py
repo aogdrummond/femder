@@ -1366,11 +1366,11 @@ class FEM3D:
             plt.legend()
             plt.xlabel('Frequency[Hz]')
             plt.ylabel('SPL [dB]')
-            # plt.show()
+#             plt.show()
         else:
             for i in range(len(self.R.coord)):
                 self.pR[:,i] = self.pN[:,closest_node(self.nos,R.coord[i,:])]
-        return self.pR
+        return p2SPL(self.pR)
     
     def evaluate_physical_group(self,domain_index,average=True,plot=False):
         """
