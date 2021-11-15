@@ -88,7 +88,7 @@ class GeometryGenerator():
 
         
         gmsh.option.setNumber("Mesh.MeshSizeMax",(self.c0*self.S_cale)/self.fmax/self.num_freq)
-        gmsh.option.setNumber("Mesh.MeshSizeMin", 0.3*(self.c0*self.S_cale)/self.fmax/self.num_freq)
+        gmsh.option.setNumber("Mesh.MeshSizeMin", 0.1*(self.c0*self.S_cale)/self.fmax/self.num_freq)
         
         # print((self.c0*self.S_cale)/self.fmax/self.num_freq)
         lc = 0#(self.c0*self.S_cale)/self.fmax/self.num_freq
@@ -339,7 +339,7 @@ class GeometryGenerator():
         
         #sym_gen_pts[:,0] = - sym_gen_pts[:,0]
         sym_gen_pts[:,0] = 0.0
-        gen_pts = np.concatenate((generation_pts,sym_gen_pts),axis=0)
+        gen_pts = np.concatenate((generation_pts,generation_pts),axis=0)
         
         self.gen_pts = gen_pts
         """"""
