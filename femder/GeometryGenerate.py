@@ -119,7 +119,8 @@ class GeometryGenerator():
 
 
         # gmsh.write('current_geo2.geo_unrolled')
-        Grid = fd.GridImport3D(self.AP, 'current_mesh.msh',S=self.S_,R=self.R_,fmax=self.fmax,num_freq=self.num_freq,order = self.order,scale=self.S_cale,plot=self.plot)
+        Grid = fd.GridImport3D(self.AP, 'current_mesh.msh',S=self.S_,R=self.R_,fmax=self.fmax,num_freq=self.num_freq,order= self.order,scale=self.S_cale,plot=self.plot)
+        
         self.nos = Grid.nos
         self.elem_surf = Grid.elem_surf
         self.elem_vol =  Grid.elem_vol
